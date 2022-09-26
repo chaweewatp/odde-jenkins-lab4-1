@@ -7,9 +7,20 @@ pipeline {
             steps{
                 script {
                     if (fileExists('multiple.txt')) {
-                        sh "rm multiple.txt"
+                        sh 
+                        """
+                            echo multiple.txt file exist
+                            echo remove multiple.txt
+                            rm multiple.txt
+                        """
+                        // sh "rm multiple.txt"
                     }
-                    sh "touch multiple.txt"
+                    sh
+                    """
+                        echo create new multiple.txt
+                        touch multiple.txt
+                    """
+                    // sh "touch multiple.txt"
                     }
                 
             }
