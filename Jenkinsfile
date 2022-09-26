@@ -3,11 +3,18 @@ pipeline {
     agent any
     stages {
         stage ('stage1'){
+            
             steps{
-                sh "touch multiple.txt"
+                script {
+                    if (fileExists('multiple.txt')) {
+                        sh "rm multiple.txt"
+                    }
+                    sh "touch multiple.txt"
+                    }
+                
             }
         }
-        stage('stage2') {
+        stage ('stage2') {
             steps {
                 sh "echo Hello >> multiple.txt"
                 
@@ -31,6 +38,5 @@ pipeline {
 
             }
         }
-        
     }
 }
