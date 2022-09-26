@@ -2,10 +2,23 @@
 pipeline {
     agent any
     stages {
-        stage('create file') {
+        stage('stage1') {
             steps {
-                sh 'echo write file'
+                sh "echo Hello >> multiple.txt"
                 
+            }
+        }
+        stage ("stage2"){
+            steps{
+                sh "echo Hello >> multiple.txt"
+
+            }
+        }
+
+        stage ("stage5"){
+            steps{
+                sh "cat multiple.txt"
+
             }
         }
         
